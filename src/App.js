@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { fetchImages } from './actions/imagesActions'
 
-function App({images , fetchImages}) {
+function App({images, loading, fetchImages}) {
   
   useEffect(() => {
     fetchImages()
@@ -15,10 +15,10 @@ function App({images , fetchImages}) {
         <h1>My-Insta-Space</h1>
       </header>
       <ul>
-        {/* {images.map((image, i) => <li key={i}>{image}</li>)} */}
+        <p>{loading ? "Loading" : "Loading Complete"}</p>
       </ul>
     </div>
   );
 }
 
-export default connect(({images}) => ({images}), { fetchImages })(App);
+export default connect(({images, loading}) => ({images, loading}), { fetchImages })(App);
