@@ -7,7 +7,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import SignupForm from './components/Signup'
+import SignupForm from './components/SignupForm'
 import ExploreImagesContainer from './containers/ExploreImagesContainer';
 
 function App({images, loading, fetchImages}) {
@@ -20,7 +20,7 @@ function App({images, loading, fetchImages}) {
     <Router>
       <div className="App">
         <header className="App-header">
-          <h1>My-Insta-Space</h1>
+          <h1 style={{ fontFamily: "Brush Script MT", fontSize: 50 }}>Insta-Space</h1>
         </header>
         <Switch>
           <Route exact path="/">
@@ -30,8 +30,7 @@ function App({images, loading, fetchImages}) {
             <ExploreImagesContainer />
           </Route>
           <Route exact path="/signup">
-            <h1>signup</h1>
-
+            <SignupForm />
           </Route>
         </Switch>
       </div>
