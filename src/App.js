@@ -2,29 +2,35 @@ import './App.css';
 import { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { fetchImages } from './actions/imagesActions'
-import { Card } from '@shopify/polaris'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+import ExploreImagesContainer from './containers/ExploreImagesContainer';
 
 function App({images, loading, fetchImages}) {
   
   useEffect(() => {
     fetchImages()
   }, [])
-
-  const renderImages = () => {
-    console.dir(images)
-    return images.map(image => <Card key={image.title}><img src={image.image_url}></img></Card>)
-  }
   
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>My-Insta-Space</h1>
-      </header>
-        <p>{loading ? "Loading" : "Loading Complete"}</p>
-      <ul>
-        {renderImages()}
-      </ul>
-    </div>
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          <h1>My-Insta-Space</h1>
+        </header>
+        <Switch>
+          <Route exact path="/">
+            <h1>Home</h1>
+          </Route>
+          <Route path="/explore">
+            <ExploreImagesContainer />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
