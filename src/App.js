@@ -2,23 +2,18 @@ import './App.css';
 import { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { fetchImages } from './actions/imagesActions'
-// import { Card } from '@shopify/polaris'
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
+import ExploreImagesContainer from './containers/ExploreImagesContainer';
 
 function App({images, loading, fetchImages}) {
   
-  // useEffect(() => {
-  //   fetchImages()
-  // }, [])
-
-  // const renderImages = () => {
-  //   console.dir(images)
-  //   return images.map(image => <Card key={image.title}><img src={image.image_url}></img></Card>)
-  // }
+  useEffect(() => {
+    fetchImages()
+  }, [])
   
   return (
     <Router>
@@ -31,7 +26,7 @@ function App({images, loading, fetchImages}) {
             <h1>Home</h1>
           </Route>
           <Route path="/explore">
-            <h1>Explore</h1>
+            <ExploreImagesContainer />
           </Route>
         </Switch>
       </div>
