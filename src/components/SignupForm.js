@@ -1,5 +1,6 @@
 import { Form, FormLayout, TextField, Button, Page, Card, DisplayText } from '@shopify/polaris'
 import { useState, useCallback } from 'react'
+const base_url = "http://localhost:3001/users"
 
 const SignupForm = () => {
     
@@ -14,10 +15,30 @@ const SignupForm = () => {
     const handlePasswordChange = useCallback((value) => setPassword(value), []);
 
     const handleSubmit = useCallback((_event) => {
+        
+        const user = {
+            username,
+            email,
+            password
+        }
+
+        const configObj = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accepts": "application/json"
+            },
+            body: JSON.stringify(user)
+        }
+
+        fetch(base_url, configObj)
+        .then(resp => resp.json())
+        .then(userData => console.log(userData))
+
         setUsername("");
         setEmail("");
         setPassword("")
-        // add fetch to submit information
+        
         console.log(email)
     }, [])
     return(
