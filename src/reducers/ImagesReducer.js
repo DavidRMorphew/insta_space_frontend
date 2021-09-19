@@ -1,5 +1,5 @@
 
-const ImagesReducer = (state = ["images1", "images2"], action) => {
+const ImagesReducer = (state = [], action) => {
     switch (action.type){
         default:
             return state
