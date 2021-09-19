@@ -1,7 +1,6 @@
+import { combineReducers } from 'redux'
+import ImagesReducer from './ImagesReducer'
 
-export const rootReducer = (state = {demo: "data"}, action) => {
-    switch (action.type){
-        default:
-            return state
-    }
-}
+export const rootReducer = combineReducers({
+    images: ImagesReducer
+})
