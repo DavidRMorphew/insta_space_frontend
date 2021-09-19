@@ -7,13 +7,14 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import SignupForm from './components/Signup'
 import ExploreImagesContainer from './containers/ExploreImagesContainer';
 
 function App({images, loading, fetchImages}) {
   
-  useEffect(() => {
-    fetchImages()
-  }, [])
+  // useEffect(() => {
+  //   fetchImages()
+  // }, [])
   
   return (
     <Router>
@@ -25,8 +26,12 @@ function App({images, loading, fetchImages}) {
           <Route exact path="/">
             <h1>Home</h1>
           </Route>
-          <Route path="/explore">
+          <Route exact path="/explore">
             <ExploreImagesContainer />
+          </Route>
+          <Route exact path="/signup">
+            <h1>signup</h1>
+
           </Route>
         </Switch>
       </div>
