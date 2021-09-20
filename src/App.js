@@ -19,35 +19,30 @@ function App({images, loading, fetchImages, user, setUser}) {
   
   // Check to see if the user is still logged in at app mount
   useEffect(() => {
+    setUserIfAlreadyLoggedIn()
+  }, [])
+
+  const setUserIfAlreadyLoggedIn = () => {
     const token = localStorage.getItem("token")
     if (token){
-      
-      const configObj = {
+      fetch(url, {
         headers: {
           Authorization: `Bearer ${token}`
         }
-      }
-
-      fetch(url, configObj)
+      })
       .then(resp => resp.json())
       .then(returnUserData => {
         setUser(returnUserData)
       })
     }
-  }, [])
+  }
 
   // useEffect(() => {
   //   fetchImages()
   // }, [])
 
-  const notLoggedIn = () => ( JSON.stringify(user) === "{}" ? true : false)
+  let loggedIn = JSON.stringify(user) === "{}" ? false : true
 
-  const redirectIfNotLoggedIn = () => {
-    if (notLoggedIn) {
-      return <Redirect to="/login" />
-    }
-  }
-  
   return (
     <Router>
       <div className="App">
@@ -64,14 +59,13 @@ function App({images, loading, fetchImages, user, setUser}) {
             <LoginForm />
           </Route>
 
-          {redirectIfNotLoggedIn()}
-
           <Route exact path="/home">
-            <h1>Home</h1>
+            { loggedIn ? <h1>Home</h1> : <Redirect to="/login" />}
           </Route>
           
           <Route exact path="/explore">
-            <ExploreImagesContainer />
+            {console.log(loggedIn)}
+            { loggedIn ? <ExploreImagesContainer /> : <Redirect to="/login" />}
           </Route>
         
         </Switch>
