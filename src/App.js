@@ -10,9 +10,30 @@ import {
 import SignupForm from './components/SignupForm'
 import LoginForm from './components/LoginForm'
 import ExploreImagesContainer from './containers/ExploreImagesContainer';
+import { setUser } from './actions/userActions'
 
-function App({images, loading, fetchImages}) {
+const url = "http://localhost:3001/api/v1/logged_in"
+
+function App({images, loading, fetchImages, setUser}) {
   
+  useEffect(() => {
+    const token = localStorage.getItem("token")
+    if (token){
+      
+      const configObj = {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+
+      fetch(url, configObj)
+      .then(resp => resp.json())
+      .then(returnUserData => {
+        setUser(returnUserData)
+      })
+    }
+  })
+
   // useEffect(() => {
   //   fetchImages()
   // }, [])
@@ -42,4 +63,4 @@ function App({images, loading, fetchImages}) {
   );
 }
 
-export default connect(({images, loading}) => ({images, loading}), { fetchImages })(App);
+export default connect(({images, loading}) => ({images, loading}), { fetchImages, setUser })(App);
