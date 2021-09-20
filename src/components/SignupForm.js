@@ -8,19 +8,21 @@ const SignupForm = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleUsernameChange = useCallback((value) => setUsername(value), []);
+    const handleUsernameChange = e => setUsername(e.target.value);
 
-    const handleEmailChange = useCallback((value) => setEmail(value), []);
+    const handleEmailChange = e => setEmail(e.target.value);
 
-    const handlePasswordChange = useCallback((value) => setPassword(value), []);
+    const handlePasswordChange = e => setPassword(e.target.value);
 
-    const handleSubmit = useCallback((_event) => {
-        
+    const handleSubmit = e => {
+        e.preventDefault()
+
         const user = {
             username,
             email,
             password
         }
+        console.log(user)
 
         const configObj = {
             method: "POST",
@@ -28,6 +30,7 @@ const SignupForm = () => {
                 "Content-Type": "application/json",
                 "Accepts": "application/json"
             },
+            credentials: 'include',
             body: JSON.stringify(user)
         }
 
@@ -37,43 +40,45 @@ const SignupForm = () => {
 
         setUsername("");
         setEmail("");
-        setPassword("")
-        
-        console.log(email)
-    }, [])
+        setPassword("");
+    }
+
     return(
         <Page narrowWidth>
             <br></br>
             <Card>
-        <Form onSubmit={handleSubmit}>
-            <FormLayout>
-            <br></br>
+        <form onSubmit={handleSubmit}>
             <DisplayText size="Large">Sign up to see photos from Nasa's Rovers and Astronomical Picture of the Day</DisplayText>
             <br></br>
-                <TextField
-                    required
-                    fieldID="username"
-                    label="Username" 
+                <input
+                    name="username"
+                    type="text" 
                     value={username}
                     onChange={handleUsernameChange}
+                    placeholder="username"
+                    required
                 />
-
-                <TextField
-                    label="Email" 
+            <br></br>
+                <input
+                    name="email" 
                     value={email}
                     onChange={handleEmailChange}
                     type="email"
+                    placeholder="email"
+                    required
                 />
-
-                <TextField
-                    label="Password" 
+            <br></br>
+                <input
+                    name="password" 
+                    type="password"
                     value={password}
                     onChange={handlePasswordChange}
-                    type="password"
+                    placeholder="password"
+                    required
                 />
-                <Button submit>Submit</Button>
-            </FormLayout>
-        </Form>
+                <br></br>
+                <button type="submit">Submit</button>
+            </form>
         </Card>
         </Page>
     )
