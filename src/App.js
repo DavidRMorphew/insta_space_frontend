@@ -5,7 +5,8 @@ import { fetchImages } from './actions/imagesActions'
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Redirect
 } from "react-router-dom";
 import SignupForm from './components/SignupForm'
 import LoginForm from './components/LoginForm'
@@ -14,8 +15,9 @@ import { setUser } from './actions/userActions'
 
 const url = "http://localhost:3001/api/v1/logged_in"
 
-function App({images, loading, fetchImages, setUser}) {
+function App({images, loading, fetchImages, user, setUser}) {
   
+  // Check to see if the user is still logged in at app mount
   useEffect(() => {
     const token = localStorage.getItem("token")
     if (token){
@@ -32,11 +34,19 @@ function App({images, loading, fetchImages, setUser}) {
         setUser(returnUserData)
       })
     }
-  })
+  }, [])
 
   // useEffect(() => {
   //   fetchImages()
   // }, [])
+
+  const notLoggedIn = () => ( JSON.stringify(user) === "{}" ? true : false)
+
+  const redirectIfNotLoggedIn = () => {
+    if (notLoggedIn) {
+      return <Redirect to="/login" />
+    }
+  }
   
   return (
     <Router>
@@ -45,22 +55,29 @@ function App({images, loading, fetchImages, setUser}) {
           <h1 style={{ fontFamily: "Brush Script MT", fontSize: 50 }}>Insta-Space</h1>
         </header>
         <Switch>
-          <Route exact path="/">
-            <h1>Home</h1>
-          </Route>
-          <Route exact path="/explore">
-            <ExploreImagesContainer />
-          </Route>
+        
           <Route exact path="/signup">
             <SignupForm />
           </Route>
-          <Route exact path="/login">
+          
+          <Route path="/login">
             <LoginForm />
           </Route>
+
+          {redirectIfNotLoggedIn()}
+
+          <Route exact path="/home">
+            <h1>Home</h1>
+          </Route>
+          
+          <Route exact path="/explore">
+            <ExploreImagesContainer />
+          </Route>
+        
         </Switch>
       </div>
     </Router>
   );
 }
 
-export default connect(({images, loading}) => ({images, loading}), { fetchImages, setUser })(App);
+export default connect(({images, loading, user}) => ({images, loading, user}), { fetchImages, setUser })(App);
