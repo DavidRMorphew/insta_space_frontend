@@ -1,8 +1,10 @@
 import { Form, FormLayout, TextField, Button, Page, Card, DisplayText } from '@shopify/polaris'
 import { useState } from 'react'
+import { connect } from 'react-redux'
+import { setUser } from '../actions/userActions'
 const base_url = "http://localhost:3001/api/v1/users"
 
-const SignupForm = () => {
+const SignupForm = ({ setUser }) => {
     
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
@@ -22,7 +24,6 @@ const SignupForm = () => {
             email,
             password
         }
-        console.log(user)
 
         const configObj = {
             method: "POST",
@@ -35,7 +36,10 @@ const SignupForm = () => {
 
         fetch(base_url, configObj)
         .then(resp => resp.json())
-        .then(userData => console.log(userData))
+        .then(returnedUserData => {
+            localStorage.setItem("token", returnedUserData.jwt)
+            setUser(returnedUserData)
+        })
 
         setUsername("");
         setEmail("");
@@ -83,4 +87,4 @@ const SignupForm = () => {
     )
 }
 
-export default SignupForm
+export default connect(null, { setUser })(SignupForm)
