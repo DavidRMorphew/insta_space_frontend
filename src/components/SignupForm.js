@@ -1,6 +1,6 @@
 import { Form, FormLayout, TextField, Button, Page, Card, DisplayText } from '@shopify/polaris'
 import { useState, useCallback } from 'react'
-const base_url = "http://localhost:3001/users"
+const base_url = "http://localhost:3001/api/v1/users"
 
 const SignupForm = () => {
     
