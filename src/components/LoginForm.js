@@ -2,15 +2,12 @@ import { Form, FormLayout, TextField, Button, Page, Card, DisplayText } from '@s
 import { useState } from 'react'
 import { connect } from 'react-redux'
 import { setUser } from '../actions/userActions'
-const base_url = "http://localhost:3001/api/v1/users"
 
-const SignupForm = ({ setUser }) => {
-    
-    const [username, setUsername] = useState("");
+const base_url = "http://localhost:3001/api/v1/login"
+
+const LoginForm = ({ setUser }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
-    const handleUsernameChange = e => setUsername(e.target.value);
 
     const handleEmailChange = e => setEmail(e.target.value);
 
@@ -20,10 +17,10 @@ const SignupForm = ({ setUser }) => {
         e.preventDefault()
 
         const user = {
-            username,
             email,
             password
         }
+        console.log(user)
 
         const configObj = {
             method: "POST",
@@ -41,7 +38,6 @@ const SignupForm = ({ setUser }) => {
             setUser(returnedUserData)
         })
 
-        setUsername("");
         setEmail("");
         setPassword("");
     }
@@ -51,17 +47,7 @@ const SignupForm = ({ setUser }) => {
             <br></br>
             <Card>
         <form onSubmit={handleSubmit}>
-            <DisplayText size="Large">Sign up to see photos from Nasa's Rovers and Astronomical Picture of the Day</DisplayText>
-            <br></br>
-                <input
-                    name="username"
-                    type="text" 
-                    value={username}
-                    onChange={handleUsernameChange}
-                    placeholder="username"
-                    required
-                />
-            <br></br>
+            <DisplayText size="Large">Please Log In</DisplayText>
                 <input
                     name="email" 
                     value={email}
@@ -87,4 +73,4 @@ const SignupForm = ({ setUser }) => {
     )
 }
 
-export default connect(null, { setUser })(SignupForm)
+export default connect(null, { setUser })(LoginForm)
