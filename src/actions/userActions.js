@@ -4,8 +4,10 @@ export const removeUser = () => ({type: 'REMOVE_USER'})
 
 const url = "http://localhost:3001/api/v1/logout"
 
-export const logoutUser = (dispatch) => {
+export const logoutUser = () => {
     return (dispatch) => {
+        const token = localStorage.getItem("token")
+        console.log(token)
         const configObj = {
             method: 'DELETE',
             headers: {
