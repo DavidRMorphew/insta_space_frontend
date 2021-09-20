@@ -2,13 +2,9 @@ import { Form, FormLayout, TextField, Button, Page, Card, DisplayText } from '@s
 import { useState } from 'react'
 const base_url = "http://localhost:3001/api/v1/users"
 
-const SignupForm = () => {
-    
-    const [username, setUsername] = useState("");
+const LoginForm = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
-    const handleUsernameChange = e => setUsername(e.target.value);
 
     const handleEmailChange = e => setEmail(e.target.value);
 
@@ -18,7 +14,6 @@ const SignupForm = () => {
         e.preventDefault()
 
         const user = {
-            username,
             email,
             password
         }
@@ -37,7 +32,6 @@ const SignupForm = () => {
         .then(resp => resp.json())
         .then(userData => console.log(userData))
 
-        setUsername("");
         setEmail("");
         setPassword("");
     }
@@ -48,16 +42,6 @@ const SignupForm = () => {
             <Card>
         <form onSubmit={handleSubmit}>
             <DisplayText size="Large">Sign up to see photos from Nasa's Rovers and Astronomical Picture of the Day</DisplayText>
-            <br></br>
-                <input
-                    name="username"
-                    type="text" 
-                    value={username}
-                    onChange={handleUsernameChange}
-                    placeholder="username"
-                    required
-                />
-            <br></br>
                 <input
                     name="email" 
                     value={email}
@@ -83,4 +67,4 @@ const SignupForm = () => {
     )
 }
 
-export default SignupForm
+export default LoginForm
