@@ -30,10 +30,17 @@ function App({images, loading, fetchImages, user, setUser}) {
           Authorization: `Bearer ${token}`
         }
       })
-      .then(resp => resp.json())
+      .then(resp => {
+        if (!resp.ok){
+          throw Error(resp.statusText)
+        } else {
+          return resp.json();
+        }
+      })
       .then(returnUserData => {
         setUser(returnUserData)
       })
+      .catch(error => console.log(error))
     }
   }
 
