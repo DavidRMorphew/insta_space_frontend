@@ -30,7 +30,6 @@ const SignupForm = () => {
                 "Content-Type": "application/json",
                 "Accepts": "application/json"
             },
-            credentials: 'include',
             body: JSON.stringify(user)
         }
 
