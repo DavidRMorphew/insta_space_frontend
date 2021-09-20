@@ -1,6 +1,6 @@
 import { Form, FormLayout, TextField, Button, Page, Card, DisplayText } from '@shopify/polaris'
 import { useState } from 'react'
-const base_url = "http://localhost:3001/api/v1/users"
+const base_url = "http://localhost:3001/api/v1/login"
 
 const LoginForm = () => {
     const [email, setEmail] = useState("");
@@ -41,7 +41,7 @@ const LoginForm = () => {
             <br></br>
             <Card>
         <form onSubmit={handleSubmit}>
-            <DisplayText size="Large">Sign up to see photos from Nasa's Rovers and Astronomical Picture of the Day</DisplayText>
+            <DisplayText size="Large">Please Log In</DisplayText>
                 <input
                     name="email" 
                     value={email}

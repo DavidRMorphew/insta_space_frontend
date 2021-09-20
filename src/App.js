@@ -8,6 +8,7 @@ import {
   Route
 } from "react-router-dom";
 import SignupForm from './components/SignupForm'
+import LoginForm from './components/LoginForm'
 import ExploreImagesContainer from './containers/ExploreImagesContainer';
 
 function App({images, loading, fetchImages}) {
@@ -31,6 +32,9 @@ function App({images, loading, fetchImages}) {
           </Route>
           <Route exact path="/signup">
             <SignupForm />
+          </Route>
+          <Route exact path="/login">
+            <LoginForm />
           </Route>
         </Switch>
       </div>
