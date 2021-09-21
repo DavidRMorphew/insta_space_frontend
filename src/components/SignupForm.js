@@ -83,7 +83,7 @@ const SignupForm = ({ setUser }) => {
                     required
                 />
                 <br></br>
-                <Button submit={true}>Log In</Button>
+                <Button submit={true}>Sign Up</Button>
             </form>
         </Card>
         </Page>
