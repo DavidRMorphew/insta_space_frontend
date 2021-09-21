@@ -21,7 +21,7 @@ export const registerUser = (user, history) => {
             localStorage.setItem("token", returnedUserData.jwt);
             dispatch(setUser(returnedUserData.user));
             dispatch({type: 'LOADING_COMPLETE'})
-            history.push('/explore')
+            history.push('/home')
         })
     }
 }
@@ -44,12 +44,12 @@ export const loginUser = (user, history) => {
             localStorage.setItem("token", returnedUserData.jwt)
             dispatch(setUser(returnedUserData.user))
             dispatch({type: 'LOADING_COMPLETE'})
-            history.push('/explore')
+            history.push('/home')
         })
     }
 }
 
-export const setUserIfAlreadyLoggedIn = () => {
+export const setUserIfAlreadyLoggedIn = (history) => {
     const url = "http://localhost:3001/api/v1/logged_in"
     return (dispatch) => {
         const token = localStorage.getItem("token")
@@ -67,7 +67,10 @@ export const setUserIfAlreadyLoggedIn = () => {
             }
           })
           .then(returnUserData => {
-            dispatch(setUser(returnUserData))
+            if (!returnUserData.error){
+                dispatch(setUser(returnUserData))
+                history.push('/home')
+              }          
           })
           .catch(error => console.log(error))
         }
@@ -78,7 +81,6 @@ export const logoutUser = () => {
     const url = "http://localhost:3001/api/v1/logout"
     return (dispatch) => {
         const token = localStorage.getItem("token")
-        console.log(token)
         const configObj = {
             method: 'DELETE',
             headers: {
