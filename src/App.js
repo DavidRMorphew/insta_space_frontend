@@ -76,7 +76,6 @@ function App({images, loading, fetchImages, user, setUser}) {
           </Route>
           
           <Route exact path="/explore">
-            {console.log(loggedIn)}
             { loggedIn ? <ExploreImagesContainer /> : <Redirect to="/login" />}
           </Route>
         

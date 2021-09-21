@@ -84,6 +84,8 @@ const SignupForm = ({ setUser }) => {
                 />
                 <br></br>
                 <Button submit={true}>Sign Up</Button>
+                <h1>Or</h1>
+                <Button outline={true} primary={true} removeUnderline={true} onClick={() => history.push('/login')}>Log In</Button>
             </form>
         </Card>
         </Page>
