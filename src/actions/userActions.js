@@ -78,7 +78,6 @@ export const logoutUser = () => {
     const url = "http://localhost:3001/api/v1/logout"
     return (dispatch) => {
         const token = localStorage.getItem("token")
-        console.log(token)
         const configObj = {
             method: 'DELETE',
             headers: {
