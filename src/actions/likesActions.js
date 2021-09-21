@@ -1,0 +1,1 @@
+export const addLike = (imageTitle, userId) => ({type: 'ADD_LIKE', payload: { imageTitle, userId }})
