@@ -57,6 +57,10 @@ function App({ fetchImages, user, setUserIfAlreadyLoggedIn }) {
           <Route exact path="/explore">
             { loggedIn ? <ExploreImagesContainer /> : <Redirect to="/login" />}
           </Route>
+
+          <Route>
+            { loggedIn ? <Home /> : <Redirect to="/login" />}
+          </Route>
         
         </Switch>
       </div>
