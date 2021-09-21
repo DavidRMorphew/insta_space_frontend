@@ -19,8 +19,8 @@ const Home = ({ user: { email, username }, loading, logoutUser }) => {
         .then(resp => resp.json())
         .then(data => console.log(data))         
         return () => {
-        setLikesCount(0)
-        setCommentsCount(0)
+            setLikesCount(0)
+            setCommentsCount(0)
         }
     }
     )
