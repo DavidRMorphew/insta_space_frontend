@@ -2,10 +2,12 @@ import { Form, FormLayout, TextField, Button, Page, Card, DisplayText } from '@s
 import { useState } from 'react'
 import { connect } from 'react-redux'
 import { setUser } from '../actions/userActions'
+import { useHistory } from 'react-router-dom'
+
 const base_url = "http://localhost:3001/api/v1/users"
 
 const SignupForm = ({ setUser }) => {
-    
+    let history = useHistory()
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -37,8 +39,9 @@ const SignupForm = ({ setUser }) => {
         fetch(base_url, configObj)
         .then(resp => resp.json())
         .then(returnedUserData => {
-            localStorage.setItem("token", returnedUserData.jwt)
-            setUser(returnedUserData)
+            localStorage.setItem("token", returnedUserData.jwt);
+            setUser(returnedUserData);
+            history.push('/explore')
         })
 
         setUsername("");
@@ -80,7 +83,7 @@ const SignupForm = ({ setUser }) => {
                     required
                 />
                 <br></br>
-                <button type="submit">Submit</button>
+                <Button submit={true}>Sign Up</Button>
             </form>
         </Card>
         </Page>
