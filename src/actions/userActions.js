@@ -1,3 +1,4 @@
+
 export const setUser = (user) => ({type: 'SET_USER', payload: user})
 
 export const removeUser = () => ({type: 'REMOVE_USER'})
@@ -45,6 +46,31 @@ export const loginUser = (user, history) => {
             dispatch({type: 'LOADING_COMPLETE'})
             history.push('/explore')
         })
+    }
+}
+
+export const setUserIfAlreadyLoggedIn = () => {
+    const url = "http://localhost:3001/api/v1/logged_in"
+    return (dispatch) => {
+        const token = localStorage.getItem("token")
+        if (token){
+          fetch(url, {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          })
+          .then(resp => {
+            if (!resp.ok){
+              throw Error(resp.statusText)
+            } else {
+              return resp.json();
+            }
+          })
+          .then(returnUserData => {
+            dispatch(setUser(returnUserData))
+          })
+          .catch(error => console.log(error))
+        }
     }
 }
 

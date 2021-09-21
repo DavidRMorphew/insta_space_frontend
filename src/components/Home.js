@@ -38,9 +38,17 @@ const Home = ({ user: { email, username }, loading, logoutUser }) => {
                     <DisplayText size="Medium">Email</DisplayText>
                     <DisplayText size="Small">{email}</DisplayText>
                         <br></br>
+                    <DisplayText size="Medium">Likes Count</DisplayText>
+                    <DisplayText size="Small">{likesCount}</DisplayText>
+                        <br></br>
+                    <DisplayText size="Medium">Comments Count</DisplayText>
+                    <DisplayText size="Small">{commentsCount}</DisplayText>
+                        <br></br>
                     <Button size="large" outline={true} primary={true} onClick={logoutUser}>Logout</Button>
                         <br></br>
                         <br></br>
+                    
+                    
                 </Card>
             </Page>
         </div>
