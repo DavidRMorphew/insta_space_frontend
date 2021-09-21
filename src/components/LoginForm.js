@@ -4,9 +4,7 @@ import { connect } from 'react-redux'
 import { setUser, loginUser } from '../actions/userActions'
 import { useHistory } from 'react-router-dom'
 
-const base_url = "http://localhost:3001/api/v1/login"
-
-const LoginForm = ({ setUser, loginUser }) => {
+const LoginForm = ({ loginUser }) => {
     let history = useHistory();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -59,4 +57,4 @@ const LoginForm = ({ setUser, loginUser }) => {
     )
 }
 
-export default connect(null, { setUser, loginUser })(LoginForm)
+export default connect(null, { loginUser })(LoginForm)

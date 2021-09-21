@@ -2,6 +2,9 @@ export const setUser = (user) => ({type: 'SET_USER', payload: user})
 
 export const removeUser = () => ({type: 'REMOVE_USER'})
 
+export const registerUser = (user, history) => {
+    
+}
 
 export const loginUser = (user, history) => {
     const url = "http://localhost:3001/api/v1/login"
@@ -19,7 +22,7 @@ export const loginUser = (user, history) => {
         .then(resp => resp.json())
         .then(returnedUserData => {
             localStorage.setItem("token", returnedUserData.jwt)
-            dispatch(setUser(returnedUserData))
+            dispatch(setUser(returnedUserData.user))
             dispatch({type: 'LOADING_COMPLETE'})
             history.push('/explore')
         })
