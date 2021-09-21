@@ -1,10 +1,11 @@
 import { connect } from "react-redux"
-import { Card } from '@shopify/polaris'
+import { MediaCard } from '@shopify/polaris'
 import { logoutUser } from '../actions/userActions'
+import ImageCard from '../components/ImageCard'
 
 const ExploreImagesContainer = ({images, loading, logoutUser}) => {
     
-    const renderImages = () => (images.map(image => <Card key={image.title}><img src={image.image_url}></img></Card>))
+    const renderImages = () => (images.map(image => <MediaCard key={image.title}><img src={image.image_url}></img></MediaCard>))
 
     const handleLogout = () => {
         console.log('click')
