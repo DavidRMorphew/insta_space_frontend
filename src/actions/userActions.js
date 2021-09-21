@@ -21,7 +21,7 @@ export const registerUser = (user, history) => {
             localStorage.setItem("token", returnedUserData.jwt);
             dispatch(setUser(returnedUserData.user));
             dispatch({type: 'LOADING_COMPLETE'})
-            history.push('/explore')
+            history.push('/home')
         })
     }
 }
@@ -44,7 +44,7 @@ export const loginUser = (user, history) => {
             localStorage.setItem("token", returnedUserData.jwt)
             dispatch(setUser(returnedUserData.user))
             dispatch({type: 'LOADING_COMPLETE'})
-            history.push('/explore')
+            history.push('/home')
         })
     }
 }
