@@ -59,7 +59,7 @@ function App({images, loading, fetchImages, user, setUser}) {
           <h1 style={{ fontFamily: "Brush Script MT", fontSize: 50 }}>Insta-Space</h1>
             <br></br>
             <br></br>
-          <Navbar/>
+          { loggedIn ? <Navbar/> : <h1 style={{ fontFamily: "Script MT", fontSize: 30 }}>Welcome!</h1>}
         </header>
         <Switch>
         
