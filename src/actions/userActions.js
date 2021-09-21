@@ -67,7 +67,9 @@ export const setUserIfAlreadyLoggedIn = () => {
             }
           })
           .then(returnUserData => {
-            dispatch(setUser(returnUserData))
+            if (!returnUserData.error){
+                dispatch(setUser(returnUserData))
+              }          
           })
           .catch(error => console.log(error))
         }
