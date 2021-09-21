@@ -14,13 +14,15 @@ import LoginForm from './components/LoginForm'
 import ExploreImagesContainer from './containers/ExploreImagesContainer';
 import Navbar from './components/Navbar'
 import Home from './components/Home'
+import { useHistory } from 'react-router-dom'
 
 const url = "http://localhost:3001/api/v1/logged_in"
 
 function App({ fetchImages, user, setUserIfAlreadyLoggedIn }) {
+  let history = useHistory()
   // Check to see if the user is still logged in at app mount
   useEffect(() => {
-    setUserIfAlreadyLoggedIn();
+    setUserIfAlreadyLoggedIn(history);
   }, [])
 
   useEffect(() => {
@@ -54,6 +56,10 @@ function App({ fetchImages, user, setUserIfAlreadyLoggedIn }) {
           
           <Route exact path="/explore">
             { loggedIn ? <ExploreImagesContainer /> : <Redirect to="/login" />}
+          </Route>
+
+          <Route>
+            { loggedIn ? <Home /> : <Redirect to="/login" />}
           </Route>
         
         </Switch>
