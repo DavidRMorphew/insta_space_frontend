@@ -12,7 +12,8 @@ const ExploreImagesContainer = ({images, loading}) => {
                 title={image.title} 
                 imageUrl={image.image_url} 
                 dateOfCapture={image.date_of_capture} 
-                likeCount={image.like_count} 
+                likeCount={image.like_count}
+                commentCount={image.comment_count} 
             />)
         )
     )
@@ -23,11 +24,11 @@ const ExploreImagesContainer = ({images, loading}) => {
                 <h1>Loading</h1>
                 :
                 <Page> 
-                <StackGrid
-                    columnWidth={300}
-                >
-                    {renderImages()}
-                </StackGrid>
+                    <StackGrid
+                        columnWidth={300}
+                    >
+                        {renderImages()}
+                    </StackGrid>
                 </Page>
             }
         </>
