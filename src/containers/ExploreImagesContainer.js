@@ -1,9 +1,10 @@
 import { connect } from "react-redux"
-import { MediaCard } from '@shopify/polaris'
+import { Page } from '@shopify/polaris'
 import { logoutUser } from '../actions/userActions'
 import ImageCard from '../components/ImageCard'
+import StackGrid from 'react-stack-grid'
 
-const ExploreImagesContainer = ({images, loading, logoutUser}) => {
+const ExploreImagesContainer = ({images, loading}) => {
     
     const renderImages = () => (images.map(image => (
             <ImageCard 
@@ -16,24 +17,21 @@ const ExploreImagesContainer = ({images, loading, logoutUser}) => {
         )
     )
 
-    const handleLogout = () => {
-        console.log('click')
-        logoutUser();
-    }
-
     return(
-        <div>
-            <button onClick={handleLogout}>Logout</button>
-            <h1>Explore!</h1>
+        <>
             { loading ? 
                 <h1>Loading</h1>
-                : 
-                <ul>
+                :
+                <Page> 
+                <StackGrid
+                    columnWidth={300}
+                >
                     {renderImages()}
-                </ul>
+                </StackGrid>
+                </Page>
             }
-        </div>
+        </>
     )
 }
 
-export default connect(({images, loading}) => ({images, loading}), { logoutUser })(ExploreImagesContainer)
+export default connect(({images, loading}) => ({images, loading}))(ExploreImagesContainer)

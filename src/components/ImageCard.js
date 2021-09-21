@@ -10,6 +10,7 @@ const ImageCard = ({imageUrl, title, dateOfCapture}) => {
             <MediaCard
                 title={title}
                 description={dateOfCapture}
+                portrait={true}
             >
             <img
                 alt=""
@@ -20,7 +21,7 @@ const ImageCard = ({imageUrl, title, dateOfCapture}) => {
                 objectPosition: 'center',
                 }}
                 src={imageUrl}
-                />
+            />
             </MediaCard>
         </div>
     )
