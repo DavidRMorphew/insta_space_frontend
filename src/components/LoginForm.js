@@ -2,10 +2,12 @@ import { Form, FormLayout, TextField, Button, Page, Card, DisplayText } from '@s
 import { useState } from 'react'
 import { connect } from 'react-redux'
 import { setUser } from '../actions/userActions'
+import { useHistory } from 'react-router-dom'
 
 const base_url = "http://localhost:3001/api/v1/login"
 
 const LoginForm = ({ setUser }) => {
+    let history = useHistory();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -36,6 +38,7 @@ const LoginForm = ({ setUser }) => {
         .then(returnedUserData => {
             localStorage.setItem("token", returnedUserData.jwt)
             setUser(returnedUserData)
+            history.push('/explore')
         })
 
         setEmail("");
