@@ -5,7 +5,7 @@ import { useState } from 'react'
 const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
-const ImageCard = ({imageUrl, title, dateOfCapture, likeCount, commentCount}) => {
+const ImageCard = ({user, imageUrl, title, dateOfCapture, likeCount, commentCount}) => {
 
     const [heart, setHeart] = useState(EMPTY_HEART)
 

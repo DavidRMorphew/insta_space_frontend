@@ -1,10 +1,12 @@
 import { connect } from "react-redux"
+import { useEffect } from 'react'
+import { fetchImages } from '../actions/imagesActions'
 import { Page } from '@shopify/polaris'
-import { logoutUser } from '../actions/userActions'
 import ImageCard from '../components/ImageCard'
 import StackGrid from 'react-stack-grid'
 
-const ExploreImagesContainer = ({images, loading}) => {
+const ExploreImagesContainer = ({images, loading, fetchImages}) => {
+
     
     const renderImages = () => (images.map(image => (
             <ImageCard 
@@ -35,4 +37,4 @@ const ExploreImagesContainer = ({images, loading}) => {
     )
 }
 
-export default connect(({images, loading}) => ({images, loading}))(ExploreImagesContainer)
+export default connect(({images, loading}) => ({images, loading}), { fetchImages })(ExploreImagesContainer)

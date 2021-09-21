@@ -45,7 +45,7 @@ function App({ fetchImages, user, setUserIfAlreadyLoggedIn }) {
           </Route>
           
           <Route path="/login">
-          { loggedIn ? <Redirect to="/explore" /> : <LoginForm />}
+          { loggedIn ? <Redirect to="/home" /> : <LoginForm />}
           </Route>
 
           <Route exact path="/home">

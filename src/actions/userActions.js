@@ -21,7 +21,7 @@ export const registerUser = (user, history) => {
             localStorage.setItem("token", returnedUserData.jwt);
             dispatch(setUser(returnedUserData.user));
             dispatch({type: 'LOADING_COMPLETE'})
-            history.push('/explore')
+            history.push('/home')
         })
     }
 }
@@ -44,7 +44,7 @@ export const loginUser = (user, history) => {
             localStorage.setItem("token", returnedUserData.jwt)
             dispatch(setUser(returnedUserData.user))
             dispatch({type: 'LOADING_COMPLETE'})
-            history.push('/explore')
+            history.push('/home')
         })
     }
 }
@@ -78,7 +78,6 @@ export const logoutUser = () => {
     const url = "http://localhost:3001/api/v1/logout"
     return (dispatch) => {
         const token = localStorage.getItem("token")
-        console.log(token)
         const configObj = {
             method: 'DELETE',
             headers: {
