@@ -1,13 +1,12 @@
 import { connect } from "react-redux"
-import { useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { fetchImages } from '../actions/imagesActions'
-import { Page } from '@shopify/polaris'
+import { Page, Button } from '@shopify/polaris'
 import ImageCard from '../components/ImageCard'
 import StackGrid from 'react-stack-grid'
 
-const ExploreImagesContainer = ({images, loading, fetchImages}) => {
-
-    
+const ExploreImagesContainer = ({ images, fetchImages }) => {
+      
     const renderImages = () => (images.map(image => (
             <ImageCard 
                 key={image.title} 
@@ -22,19 +21,16 @@ const ExploreImagesContainer = ({images, loading, fetchImages}) => {
 
     return(
         <>
-            { loading ? 
-                <h1>Loading</h1>
-                :
-                <Page> 
-                    <StackGrid
-                        columnWidth={300}
-                    >
-                        {renderImages()}
-                    </StackGrid>
-                </Page>
-            }
+            <Page>
+                <StackGrid columnWidth={300} >
+                    {renderImages()}
+                </StackGrid>
+            </Page>
+            <Button primary={true} size="Large" removeUnderline={true} onClick={() => fetchImages()}>Load More</Button>
+            <br></br>
+            <br></br>
         </>
     )
 }
 
-export default connect(({images, loading}) => ({images, loading}), { fetchImages })(ExploreImagesContainer)
+export default connect(({images}) => ({images}), { fetchImages })(ExploreImagesContainer)
