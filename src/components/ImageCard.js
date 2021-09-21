@@ -1,14 +1,29 @@
 import { MediaCard } from '@shopify/polaris'
 import { connect } from "react-redux"
 
-const ImageCard = ({image}) => {
-    return(
-        <div className="e-card e-card-horizontal">
-            <MediaCard>
+const EMPTY_HEART = '♡'
+const FULL_HEART = '♥'
 
+const ImageCard = ({imageUrl, title, dateOfCapture}) => {
+    return(
+        <div >
+            <MediaCard
+                title={title}
+                description={dateOfCapture}
+            >
+            <img
+                alt=""
+                width="100%"
+                height="100%"
+                style={{
+                objectFit: 'cover',
+                objectPosition: 'center',
+                }}
+                src={imageUrl}
+                />
             </MediaCard>
         </div>
     )
 }
 
-export default connect()(ImageCard)
+export default connect(({ user }) => ({ user }))(ImageCard)
