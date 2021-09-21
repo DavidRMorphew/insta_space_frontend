@@ -1,12 +1,10 @@
 import { Form, FormLayout, TextField, Button, Page, Card, DisplayText } from '@shopify/polaris'
 import { useState } from 'react'
 import { connect } from 'react-redux'
-import { setUser } from '../actions/userActions'
+import { registerUser } from '../actions/userActions'
 import { useHistory } from 'react-router-dom'
 
-const base_url = "http://localhost:3001/api/v1/users"
-
-const SignupForm = ({ setUser }) => {
+const SignupForm = ({ registerUser }) => {
     let history = useHistory()
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
@@ -20,30 +18,12 @@ const SignupForm = ({ setUser }) => {
 
     const handleSubmit = e => {
         e.preventDefault()
-
         const user = {
             username,
             email,
             password
         }
-
-        const configObj = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accepts": "application/json"
-            },
-            body: JSON.stringify(user)
-        }
-
-        fetch(base_url, configObj)
-        .then(resp => resp.json())
-        .then(returnedUserData => {
-            localStorage.setItem("token", returnedUserData.jwt);
-            setUser(returnedUserData);
-            history.push('/explore')
-        })
-
+        registerUser(user, history)
         setUsername("");
         setEmail("");
         setPassword("");
@@ -92,4 +72,4 @@ const SignupForm = ({ setUser }) => {
     )
 }
 
-export default connect(null, { setUser })(SignupForm)
+export default connect(null, { registerUser })(SignupForm)

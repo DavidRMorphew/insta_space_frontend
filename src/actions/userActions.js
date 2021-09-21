@@ -3,7 +3,26 @@ export const setUser = (user) => ({type: 'SET_USER', payload: user})
 export const removeUser = () => ({type: 'REMOVE_USER'})
 
 export const registerUser = (user, history) => {
-    
+    const url = "http://localhost:3001/api/v1/users"
+    return (dispatch) => {
+        const configObj = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accepts": "application/json"
+            },
+            body: JSON.stringify(user)
+        }
+        dispatch({type: 'LOADING'})
+        fetch(url, configObj)
+        .then(resp => resp.json())
+        .then(returnedUserData => {
+            localStorage.setItem("token", returnedUserData.jwt);
+            dispatch(setUser(returnedUserData.user));
+            dispatch({type: 'LOADING_COMPLETE'})
+            history.push('/explore')
+        })
+    }
 }
 
 export const loginUser = (user, history) => {
