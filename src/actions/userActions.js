@@ -49,7 +49,7 @@ export const loginUser = (user, history) => {
     }
 }
 
-export const setUserIfAlreadyLoggedIn = () => {
+export const setUserIfAlreadyLoggedIn = (history) => {
     const url = "http://localhost:3001/api/v1/logged_in"
     return (dispatch) => {
         const token = localStorage.getItem("token")
@@ -69,6 +69,7 @@ export const setUserIfAlreadyLoggedIn = () => {
           .then(returnUserData => {
             if (!returnUserData.error){
                 dispatch(setUser(returnUserData))
+                history.push('/home')
               }          
           })
           .catch(error => console.log(error))
