@@ -25,9 +25,9 @@ function App({ fetchImages, user, setUserIfAlreadyLoggedIn }) {
     setUserIfAlreadyLoggedIn(history);
   }, [])
 
-  useEffect(() => {
-    fetchImages()
-  }, [])
+  // useEffect(() => {
+  //   fetchImages()
+  // }, [])
 
   let loggedIn = JSON.stringify(user) === "{}" ? false : true
 

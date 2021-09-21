@@ -1,13 +1,13 @@
 import { connect } from "react-redux"
-import { useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { fetchImages } from '../actions/imagesActions'
 import { Page } from '@shopify/polaris'
 import ImageCard from '../components/ImageCard'
 import StackGrid from 'react-stack-grid'
+import InfiniteScroll from 'react-infinite-scroller';
 
-const ExploreImagesContainer = ({images, loading, fetchImages}) => {
-
-    
+const ExploreImagesContainer = ({ images, fetchImages }) => {
+      
     const renderImages = () => (images.map(image => (
             <ImageCard 
                 key={image.title} 
@@ -20,21 +20,44 @@ const ExploreImagesContainer = ({images, loading, fetchImages}) => {
         )
     )
 
+    const [hasMoreImages, setHasMoreImages] = useState(true);
+
+    const getMoreImages = (page) => {
+        newPromise
+        .then(resp => {
+            setHasMoreImages(true)
+        })
+    }
+
+    const newPromise = new Promise((resolve, reject) => {
+        fetchImages();
+    })
+    
+    useEffect(() => {
+        fetchImages()
+    }, [])
+
+
     return(
         <>
-            { loading ? 
-                <h1>Loading</h1>
-                :
-                <Page> 
+
+                {/* <Page> */}
+                <InfiniteScroll
+                    pageStart={0}
+                    loadMore={getMoreImages}
+                    hasMore={hasMoreImages}
+                    loader={<div className="loader" key={0}>Loading ...</div>}
+                    useWindow={false}
+                > 
                     <StackGrid
                         columnWidth={300}
                     >
                         {renderImages()}
                     </StackGrid>
-                </Page>
-            }
+                </InfiniteScroll>
+                {/* </Page> */}
         </>
     )
 }
 
-export default connect(({images, loading}) => ({images, loading}), { fetchImages })(ExploreImagesContainer)
+export default connect(({images}) => ({images}), { fetchImages })(ExploreImagesContainer)
