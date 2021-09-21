@@ -25,7 +25,7 @@ function App({ fetchImages, user, setUserIfAlreadyLoggedIn }) {
 
   useEffect(() => {
     fetchImages()
-  }, [user])
+  }, [])
 
   let loggedIn = JSON.stringify(user) === "{}" ? false : true
 
