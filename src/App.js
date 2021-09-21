@@ -17,15 +17,15 @@ import Home from './components/Home'
 
 const url = "http://localhost:3001/api/v1/logged_in"
 
-function App({images, loading, fetchImages, user, setUserIfAlreadyLoggedIn}) {
+function App({ fetchImages, user, setUserIfAlreadyLoggedIn }) {
   // Check to see if the user is still logged in at app mount
   useEffect(() => {
     setUserIfAlreadyLoggedIn();
   }, [])
 
-  // useEffect(() => {
-  //   fetchImages()
-  // }, [])
+  useEffect(() => {
+    fetchImages()
+  }, [])
 
   let loggedIn = JSON.stringify(user) === "{}" ? false : true
 
@@ -62,4 +62,4 @@ function App({images, loading, fetchImages, user, setUserIfAlreadyLoggedIn}) {
   );
 }
 
-export default connect(({images, loading, user}) => ({images, loading, user}), { fetchImages, setUserIfAlreadyLoggedIn })(App);
+export default connect(({ user }) => ({ user }), { fetchImages, setUserIfAlreadyLoggedIn })(App);
