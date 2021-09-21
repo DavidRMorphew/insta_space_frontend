@@ -69,7 +69,9 @@ const LoginForm = ({ setUser }) => {
                     required
                 />
                 <br></br>
-                <button type="submit">Submit</button>
+                <Button submit={true}>Log In</Button>
+                <h1>Or</h1>
+                <Button outline={true} primary={true} removeUnderline={true} onClick={() => history.push('/signup')}>Sign Up</Button>
             </form>
         </Card>
         </Page>
