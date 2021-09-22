@@ -21,16 +21,18 @@ const ExploreImagesContainer = ({ images, fetchImages }) => {
 
     return(
         <>
+            <div id="images-container">
             <Page>
                 <Suspense fallback={<div>Loading...</div>}>
-                    <StackGrid columnWidth={300} >
+                    <StackGrid columnWidth={300} monitorImagesLoaded={true }>
                         {renderImages()}
                     </StackGrid>
                 </Suspense>
             </Page>
                 <Button primary={true} size="Large" removeUnderline={true} onClick={() => fetchImages()}>Load More</Button>
-            <br></br>
-            <br></br>
+                <br></br>
+                <br></br>
+            </div>
         </>
     )
 }
