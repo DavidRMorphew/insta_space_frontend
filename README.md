@@ -28,6 +28,10 @@ This app is also intended to fetch images from other NASA Apis in future version
 
 Some of these features are apparent in the Card display of Rover Images. The likes count and comment count, for instance, will display likes and comments of users that are persisted in the Rails Api database.
 
+## Under the Hood
+
+This React App utilizes React-Redux and Redux-Thunk and combinedReducers. Currently, only the user, likes, and loading reducers and in use, but some of the tracks have been laid for the use of the likes reducer.
+
 ## Contributing
 
 Pull requests are welcome. If you want to make major changes, please open an issue first to discuss the proposed change.
@@ -38,4 +42,4 @@ Contributors are expected to adhere to the [Contributor Covenant](https://www.co
 
 ## License
 
-The app is open source under the terms of the [MIT License].
+The app is open source under the terms of the [MIT License](https://github.com/DavidRMorphew/insta_space_frontend/blob/main/LICENSE.TXT).
