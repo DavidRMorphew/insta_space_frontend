@@ -3,7 +3,7 @@ import { Page, Card, DisplayText, Button } from '@shopify/polaris'
 import { logoutUser } from '../actions/userActions'
 import { useState, useEffect } from 'react'
 
-const url = 'http://localhost:3001/api/v1/users/show'
+const url = 'https://insta-space-api.herokuapp.com/api/v1/users/show'
 
 const Home = ({ user: { email, username }, loading, logoutUser }) => {
     const [likesCount, setLikesCount] = useState(0)
