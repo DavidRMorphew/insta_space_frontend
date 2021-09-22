@@ -6,7 +6,7 @@
 
 Welcome to Insta-Space! You can browse images from Nasa's space exploration (currently Mars Rovers Pictures) and add where you can like images you find appealing.
 
-First, fork, clone, and install the [React Frontend](https://github.com/DavidRMorphew/insta_space_frontend).
+First, fork, clone, and install the [Rails Api](https://github.com/DavidRMorphew/insta_space_backend).
 
 Then fork this repository.
 
