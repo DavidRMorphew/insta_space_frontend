@@ -11,7 +11,7 @@ import {
 } from "react-router-dom";
 import SignupForm from './components/SignupForm'
 import LoginForm from './components/LoginForm'
-// import ExploreImagesContainer from './containers/ExploreImagesContainer';
+import ExploreImagesContainer from './containers/ExploreImagesContainer';
 import Navbar from './components/Navbar'
 import Home from './components/Home'
 import { useHistory } from 'react-router-dom'
@@ -19,7 +19,7 @@ import loadable from '@loadable/component'
 
 const url = "https://insta-space-api.herokuapp.com/api/v1/logged_in"
 
-const LoadableExploreImages = loadable(() => import('./containers/ExploreImagesContainer'))
+// const LoadableExploreImages = loadable(() => import('./containers/ExploreImagesContainer'))
 
 function App({ fetchImages, user, setUserIfAlreadyLoggedIn }) {
   let history = useHistory()
@@ -61,7 +61,7 @@ function App({ fetchImages, user, setUserIfAlreadyLoggedIn }) {
           
           <Route exact path="/explore">
             {/* { loggedIn ? <LoadableExploreImages /> : <Redirect to="/login" />} */}
-            <LoadableExploreImages />
+            <ExploreImagesContainer />
           </Route>
 
           <Route>
