@@ -41,28 +41,32 @@ function App({ fetchImages, user, setUserIfAlreadyLoggedIn }) {
           <h1 style={{ fontFamily: "Brush Script MT", fontSize: 50 }}>Insta-Space</h1>
             <br></br>
             <br></br>
-          { loggedIn ? <Navbar/> : <h1 style={{ fontFamily: "Script MT", fontSize: 30 }}>Welcome!</h1>}
+          {/* { loggedIn ? <Navbar/> : <h1 style={{ fontFamily: "Script MT", fontSize: 30 }}>Welcome!</h1>} */}
+          <Navbar />
         </header>
         <Switch>
         
-          <Route exact path="/signup">
+          {/* <Route exact path="/signup">
             <SignupForm />
-          </Route>
+          </Route> */}
           
           <Route path="/login">
           { loggedIn ? <Redirect to="/home" /> : <LoginForm />}
           </Route>
 
           <Route exact path="/home">
-            { loggedIn ? <Home /> : <Redirect to="/login" />}
+            {/* { loggedIn ? <Home /> : <Redirect to="/login" />} */}
+            <Home />
           </Route>
           
           <Route exact path="/explore">
-            { loggedIn ? <LoadableExploreImages /> : <Redirect to="/login" />}
+            {/* { loggedIn ? <LoadableExploreImages /> : <Redirect to="/login" />} */}
+            <LoadableExploreImages />
           </Route>
 
           <Route>
-            { loggedIn ? <Home /> : <Redirect to="/login" />}
+            {/* { loggedIn ? <Home /> : <Redirect to="/login" />} */}
+            <Redirect to="/home" />
           </Route>
         
         </Switch>

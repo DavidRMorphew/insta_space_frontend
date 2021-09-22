@@ -32,11 +32,12 @@ const Home = ({ user: { email, username }, loading, logoutUser }) => {
                 <br></br>
                 <Card>
                     <br></br>
+                    <p>(with dummy data)</p>
                     <DisplayText size="Medium">Username</DisplayText>
-                    <DisplayText size="Small">{username}</DisplayText>
+                    <DisplayText size="Small">nasalover</DisplayText>
                         <br></br>
                     <DisplayText size="Medium">Email</DisplayText>
-                    <DisplayText size="Small">{email}</DisplayText>
+                    <DisplayText size="Small">mrtesla@spacex.com</DisplayText>
                         <br></br>
                     <DisplayText size="Medium">Likes Count</DisplayText>
                     <DisplayText size="Small">{likesCount}</DisplayText>
