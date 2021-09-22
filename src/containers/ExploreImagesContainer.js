@@ -1,11 +1,11 @@
 import { connect } from "react-redux"
-import { useEffect, useRef, useState } from 'react'
+import { Suspense } from 'react'
 import { fetchImages } from '../actions/imagesActions'
 import { Page, Button } from '@shopify/polaris'
 import ImageCard from '../components/ImageCard'
 import StackGrid from 'react-stack-grid'
 
-const ExploreImagesContainer = ({ images, fetchImages }) => {
+const ExploreImagesContainer = ({ images, loading, fetchImages }) => {
       
     const renderImages = () => (images.map(image => (
             <ImageCard 
@@ -22,11 +22,13 @@ const ExploreImagesContainer = ({ images, fetchImages }) => {
     return(
         <>
             <Page>
-                <StackGrid columnWidth={300} >
-                    {renderImages()}
-                </StackGrid>
+                <Suspense fallback={<div>Loading...</div>}>
+                    <StackGrid columnWidth={300} >
+                        {renderImages()}
+                    </StackGrid>
+                </Suspense>
             </Page>
-            <Button primary={true} size="Large" removeUnderline={true} onClick={() => fetchImages()}>Load More</Button>
+                <Button primary={true} size="Large" removeUnderline={true} onClick={() => fetchImages()}>Load More</Button>
             <br></br>
             <br></br>
         </>
