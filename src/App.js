@@ -11,12 +11,15 @@ import {
 } from "react-router-dom";
 import SignupForm from './components/SignupForm'
 import LoginForm from './components/LoginForm'
-import ExploreImagesContainer from './containers/ExploreImagesContainer';
+// import ExploreImagesContainer from './containers/ExploreImagesContainer';
 import Navbar from './components/Navbar'
 import Home from './components/Home'
 import { useHistory } from 'react-router-dom'
+import loadable from '@loadable/component'
 
 const url = "http://localhost:3001/api/v1/logged_in"
+
+const LoadableExploreImages = loadable(() => import('./containers/ExploreImagesContainer'))
 
 function App({ fetchImages, user, setUserIfAlreadyLoggedIn }) {
   let history = useHistory()
@@ -55,7 +58,7 @@ function App({ fetchImages, user, setUserIfAlreadyLoggedIn }) {
           </Route>
           
           <Route exact path="/explore">
-            { loggedIn ? <ExploreImagesContainer /> : <Redirect to="/login" />}
+            { loggedIn ? <LoadableExploreImages /> : <Redirect to="/login" />}
           </Route>
 
           <Route>
