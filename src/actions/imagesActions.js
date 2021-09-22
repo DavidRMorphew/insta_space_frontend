@@ -1,4 +1,4 @@
-const base_url = "http://localhost:3001/api/v1/images"
+const base_url = "https://insta-space-api.herokuapp.com/api/v1/images"
 
 export const addImages = (images) => ({type: 'ADD_IMAGES', payload: images})
 

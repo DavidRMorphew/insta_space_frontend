@@ -17,7 +17,7 @@ import Home from './components/Home'
 import { useHistory } from 'react-router-dom'
 import loadable from '@loadable/component'
 
-const url = "http://localhost:3001/api/v1/logged_in"
+const url = "https://insta-space-api.herokuapp.com/api/v1/logged_in"
 
 const LoadableExploreImages = loadable(() => import('./containers/ExploreImagesContainer'))
 

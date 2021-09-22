@@ -50,7 +50,7 @@ export const loginUser = (user, history) => {
 }
 
 export const setUserIfAlreadyLoggedIn = (history) => {
-    const url = "http://localhost:3001/api/v1/logged_in"
+    const url = "https://insta-space-api.herokuapp.com/api/v1/logged_in"
     return (dispatch) => {
         const token = localStorage.getItem("token")
         if (token){
