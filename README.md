@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# Insta-Space
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Nebula Image](https://lh3.googleusercontent.com/YGJ77qN9KiwctZgfqV8Bf3hNo0rZvcFaPKDTkvtS6kVbtwyCS80Pm6dpXzJCCLZE1Q)
 
-## Available Scripts
+## Purpose and Usage
 
-In the project directory, you can run:
+Welcome to Insta-Space! You can browse images from Nasa's space exploration (currently Mars Rovers Pictures) and add where you can like images you find appealing.
 
-### `yarn start`
+First, fork, clone, and install the [React Frontend](https://github.com/DavidRMorphew/insta_space_frontend).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Then fork this repository.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Clone it:
+```
+git clone git@github.com:DavidRMorphew/insta_space_frontend.git
+```
+Run
+```
+npm install
+```
+## Features Built for the Future
 
-### `yarn test`
+Currently, this Api persists users and provides authentication using JSON Web Tokens and persisted user information in the Rails Api, and web tokens in localStorage in this React Frontend.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+User authentication is intended for future functionality with persisted user likes, comments, and responses to comments. For the future plans to add comments, replies, and persist user likes, see the  [drawio diagram](/Users/Morpheus299800/Projects/coding_challenges/my-insta-space-split/insta-space-backend/insta_space_backend/database_table.png) located in the Rails Api.
 
-### `yarn build`
+This app is also intended to fetch images from other NASA Apis in future versions.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Some of these features are apparent in the Card display of Rover Images. The likes count and comment count, for instance, will display likes and comments of users that are persisted in the Rails Api database.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Under the Hood
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This React App utilizes React-Redux and Redux-Thunk and combinedReducers. Currently, only the user, likes, and loading reducers and in use, but some of the tracks have been laid for the use of the likes reducer.
 
-### `yarn eject`
+## Contributing
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Pull requests are welcome. If you want to make major changes, please open an issue first to discuss the proposed change.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Please feel free to add and update tests where appropriate.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Contributors are expected to adhere to the [Contributor Covenant](https://www.contributor-covenant.org/) code of conduct.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## License
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The app is open source under the terms of the [MIT License](https://github.com/DavidRMorphew/insta_space_frontend/blob/main/LICENSE.TXT).
