@@ -5,7 +5,7 @@ import { Page, Button } from '@shopify/polaris'
 import ImageCard from '../components/ImageCard'
 import StackGrid from 'react-stack-grid'
 
-const ExploreImagesContainer = ({ images, loading, fetchImages }) => {
+const ExploreImagesContainer = ({ images, fetchImages }) => {
       
     const renderImages = () => (images.map(image => (
             <ImageCard 
