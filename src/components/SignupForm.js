@@ -1,4 +1,4 @@
-import { Form, FormLayout, TextField, Button, Page, Card, DisplayText } from '@shopify/polaris'
+import { Button, Page, Card, DisplayText } from '@shopify/polaris'
 import { useState } from 'react'
 import { connect } from 'react-redux'
 import { registerUser } from '../actions/userActions'

@@ -1,7 +1,7 @@
-import { Form, FormLayout, TextField, Button, Page, Card, DisplayText } from '@shopify/polaris'
+import { Button, Page, Card, DisplayText } from '@shopify/polaris'
 import { useState } from 'react'
 import { connect } from 'react-redux'
-import { setUser, loginUser } from '../actions/userActions'
+import { loginUser } from '../actions/userActions'
 import { useHistory } from 'react-router-dom'
 
 const LoginForm = ({ loginUser }) => {
