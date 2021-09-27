@@ -26,8 +26,8 @@ const ImageCard = ({user, imageUrl, title, dateOfCapture, likeCount, commentCoun
             >
             <img
                 alt={title}
-                width="100%"
-                height="100%"
+                width="60%"
+                height="60%"
                 style={{
                 objectFit: 'cover',
                 objectPosition: 'center',
