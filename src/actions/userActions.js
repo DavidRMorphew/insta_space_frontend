@@ -4,7 +4,7 @@ export const setUser = (user) => ({type: 'SET_USER', payload: user})
 export const removeUser = () => ({type: 'REMOVE_USER'})
 
 export const registerUser = (user, history) => {
-    const url = "http://localhost:3001/api/v1/users"
+    const url = "https://insta-space-api.herokuapp.com/api/v1/users"
     return (dispatch) => {
         const configObj = {
             method: "POST",
@@ -27,7 +27,7 @@ export const registerUser = (user, history) => {
 }
 
 export const loginUser = (user, history) => {
-    const url = "http://localhost:3001/api/v1/login"
+    const url = "https://insta-space-api.herokuapp.com/api/v1/login"
     return (dispatch) => {
         const configObj = {
             method: "POST",
@@ -78,7 +78,7 @@ export const setUserIfAlreadyLoggedIn = (history) => {
 }
 
 export const logoutUser = () => {
-    const url = "http://localhost:3001/api/v1/logout"
+    const url = "https://insta-space-api.herokuapp.com/api/v1/logout"
     return (dispatch) => {
         const token = localStorage.getItem("token")
         const configObj = {
