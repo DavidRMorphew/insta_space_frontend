@@ -23,7 +23,7 @@ const ExploreImagesContainer = ({ images, fetchImages }) => {
         <>
             <Page>
                 <Suspense fallback={<div>Loading...</div>}>
-                    <StackGrid columnWidth={300} >
+                    <StackGrid columnWidth={300} monitorImagesLoaded={true }>
                         {renderImages()}
                     </StackGrid>
                 </Suspense>
