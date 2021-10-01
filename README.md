@@ -4,7 +4,7 @@
 
 ## Demo of App In Development
 
-A demo of some of this app's features is currently available [here]("https://insta-space.netlify.app").
+A demo of some of this app's features is currently available [here](https://insta-space.netlify.app).
 
 ## Purpose and Usage
 
