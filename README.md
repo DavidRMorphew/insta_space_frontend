@@ -2,6 +2,16 @@
 
 ![Nebula Image](https://lh3.googleusercontent.com/YGJ77qN9KiwctZgfqV8Bf3hNo0rZvcFaPKDTkvtS6kVbtwyCS80Pm6dpXzJCCLZE1Q)
 
+## Demo of App In Development
+
+A demo of some of this app's features is currently availble here:
+
+<div align="center">
+    <a href="https://insta-space.netlify.app" target="_blank">
+        <img src="./insta-space-screen-shot.png" alt="Insta-Space Screen Shot" width="400" height="300" border="10" />
+    </a>
+</div> 
+
 ## Purpose and Usage
 
 Welcome to Insta-Space! You can browse images from Nasa's space exploration (currently Mars Rovers Pictures) and add where you can like images you find appealing.
