@@ -6,6 +6,8 @@
 
 A demo of some of this app's features is currently available [here](https://insta-space.netlify.app).
 
+![demo screen shot](./insta-space-screen-shot.jpg)
+
 ## Purpose and Usage
 
 Welcome to Insta-Space! You can browse images from Nasa's space exploration (currently Mars Rovers Pictures) and add where you can like images you find appealing.
