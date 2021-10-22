@@ -1,10 +1,12 @@
+const baseUrl = "http://localhost:3001/api/v1/"
+const baseHerokuUrl = "https://insta-space-api.herokuapp.com/api/v1/"
 
 export const setUser = (user) => ({type: 'SET_USER', payload: user})
 
 export const removeUser = () => ({type: 'REMOVE_USER'})
 
 export const registerUser = (user, history) => {
-    const url = "https://insta-space-api.herokuapp.com/api/v1/users"
+    
     return (dispatch) => {
         const configObj = {
             method: "POST",
@@ -15,7 +17,7 @@ export const registerUser = (user, history) => {
             body: JSON.stringify(user)
         }
         dispatch({type: 'LOADING'})
-        fetch(url, configObj)
+        fetch(`${baseUrl}users`, configObj)
         .then(resp => resp.json())
         .then(returnedUserData => {
             localStorage.setItem("token", returnedUserData.jwt);
@@ -27,7 +29,7 @@ export const registerUser = (user, history) => {
 }
 
 export const loginUser = (user, history) => {
-    const url = "https://insta-space-api.herokuapp.com/api/v1/login"
+    
     return (dispatch) => {
         const configObj = {
             method: "POST",
@@ -38,7 +40,7 @@ export const loginUser = (user, history) => {
             body: JSON.stringify(user)
         }
         dispatch({type: 'LOADING'})
-        fetch(url, configObj)
+        fetch(`${baseUrl}login`, configObj)
         .then(resp => resp.json())
         .then(returnedUserData => {
             localStorage.setItem("token", returnedUserData.jwt)
@@ -50,11 +52,11 @@ export const loginUser = (user, history) => {
 }
 
 export const setUserIfAlreadyLoggedIn = (history) => {
-    const url = "https://insta-space-api.herokuapp.com/api/v1/logged_in"
+
     return (dispatch) => {
         const token = localStorage.getItem("token")
         if (token){
-          fetch(url, {
+          fetch(`${baseUrl}logged_in`, {
             headers: {
               Authorization: `Bearer ${token}`
             }
@@ -78,7 +80,7 @@ export const setUserIfAlreadyLoggedIn = (history) => {
 }
 
 export const logoutUser = () => {
-    const url = "https://insta-space-api.herokuapp.com/api/v1/logout"
+    
     return (dispatch) => {
         const token = localStorage.getItem("token")
         const configObj = {
@@ -87,7 +89,7 @@ export const logoutUser = () => {
                 Authorization: `Bearer ${token}`
             }
         }
-        fetch(url, configObj)
+        fetch(`${baseUrl}/logout`, configObj)
         .then(resp => resp.json())
         .then(returnData => {
             console.log(returnData)
