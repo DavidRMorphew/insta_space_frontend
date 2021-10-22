@@ -1,4 +1,5 @@
-const base_url = "https://insta-space-api.herokuapp.com/api/v1/images"
+const baseUrl = "http://localhost:3001/api/v1/"
+const baseHerokuUrl = "https://insta-space-api.herokuapp.com/api/v1/"
 
 export const addImages = (images) => ({type: 'ADD_IMAGES', payload: images})
 
@@ -11,7 +12,7 @@ export const fetchImages = () => {
             }
         }
         dispatch({type: 'LOADING'})
-        fetch(base_url, configObj)
+        fetch(`${baseUrl}images`, configObj)
         .then(resp => resp.json())
         .then(images => {
             dispatch(addImages(images))
